@@ -2,7 +2,7 @@ require 'pry'
 
 class Genre 
 
-    extend Concerns::Findable
+    extend Concerns::Findable::Classmethods
 
     attr_accessor :name 
 
