@@ -2,7 +2,7 @@ require 'pry'
 
 class Song 
 
-    #extend Concerns::Findable::Classmethods
+    extend Concerns::Findable
 
     attr_accessor :name, :genre 
     attr_reader :artist
@@ -56,7 +56,15 @@ class Song
         self.find_by_name(name) || self.create(name)
     end
 
-
+    def self.new_from_filename(file_name)
+        title = file_name.split(" "||" - ")
+        person = title[0]
+        title2 = title[2..5].join(", ").gsub(/,/,"")  
+        artist_object = Artist.find_or_create_by_name(person)
+        song_object = Song.find_or_create_by_name(title2)
+        
+        
+    end
 
 
 
